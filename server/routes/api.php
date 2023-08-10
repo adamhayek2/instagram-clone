@@ -22,6 +22,8 @@ Route::group(["middleware" => "auth:api"], function() {
     Route::group(["prefix" => "user"], function() {
 
         Route::post('posts', [UserController::class, 'postsFromFollowing']);
+        Route::get('followers', [UserController::class, 'getFollowers']);
+        Route::get('followings', [UserController::class, 'getFollowing']);
         Route::post('logout', [AuthController::class, 'logout']);
         Route::post('refresh', [AuthController::class, 'refresh']);
     });

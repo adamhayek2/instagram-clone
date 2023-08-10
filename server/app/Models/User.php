@@ -13,6 +13,8 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $appends = ['name'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -61,15 +63,27 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function followingPosts(){
+    public function getNameAttribute() {
+        return $this -> username;
+    }
+
+    public function followingPosts() {
         return $this->hasManyThrough(
             Post::class,  
             Follow::class,
             'follower_id',  
-            'user_id',      
+            'user_id',
             'id',           
-            'following_id'  
+            'following_id',  
         );
+    }
+
+    public function followers() {
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'follower_id');
+    }
+
+    public function following() {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id');
     }
 
 }

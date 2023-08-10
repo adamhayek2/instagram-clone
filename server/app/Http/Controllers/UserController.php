@@ -13,11 +13,35 @@ class UserController extends Controller
     
         $user = Auth::user();
         
-        $followingPosts = $user->followingPosts()->get();
+        $followingPosts = $user->followingPosts()->with('user:username,id')->get();
     
         return response()->json([
             "status" => "success", 
             "data" => $followingPosts
+        ]);
+    }
+
+    function getFollowers() {
+    
+        $user = Auth::user();
+        
+        $followers = $user->followers;
+    
+        return response()->json([
+            "status" => "success", 
+            "data" => $followers
+        ]);
+    }
+
+    function getFollowing() {
+    
+        $user = Auth::user();
+        
+        $following = $user->following;
+    
+        return response()->json([
+            "status" => "success", 
+            "data" => $following
         ]);
     }
     

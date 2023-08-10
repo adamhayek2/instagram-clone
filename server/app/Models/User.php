@@ -60,4 +60,16 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims() {
         return [];
     }
+
+    public function followingPosts(){
+        return $this->hasManyThrough(
+            Post::class,  
+            Follow::class,
+            'follower_id',  
+            'user_id',      
+            'id',           
+            'following_id'  
+        );
+    }
+
 }

@@ -24,6 +24,7 @@ Route::group(["middleware" => "auth:api"], function() {
 
         Route::post('posts', [UserController::class, 'postsFromFollowing']);
         Route::post('/create_post', [PostController::class, 'createPost']);
+        Route::post('/search', [UserController::class, 'search']);
         Route::get('followers', [UserController::class, 'getFollowers']);
         Route::get('followings', [UserController::class, 'getFollowing']);
         Route::post('logout', [AuthController::class, 'logout']);

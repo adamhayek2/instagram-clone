@@ -86,4 +86,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id');
     }
 
+    public static function searchByUsername($username){
+        return User::where('username', 'like', '%' . $username . '%')->get();
+    }
+
 }

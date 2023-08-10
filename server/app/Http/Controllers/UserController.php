@@ -45,4 +45,12 @@ class UserController extends Controller
         ]);
     }
     
+    function search(Request $request) {
+        $searchedUsers = User::searchByUsername($request->username);
+
+        return response()->json([
+            "data" => $searchedUsers
+        ]);
+
+    }
 }

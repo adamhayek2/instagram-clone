@@ -28,7 +28,7 @@ return new class extends Migration{
             $table->id();
             $table->integer('user_id');
             $table->string('caption');
-            $table->integer('extra');
+            $table->text('image');
             $table->timestamps();
         });
 

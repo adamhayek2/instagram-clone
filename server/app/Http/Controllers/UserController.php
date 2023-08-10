@@ -41,7 +41,7 @@ class UserController extends Controller
     
         return response()->json([
             "status" => "success", 
-            "data" => $following
+            "data" => $user
         ]);
     }
     

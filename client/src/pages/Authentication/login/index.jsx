@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'; 
-import { ReactComponent as LogoSVG } from "../../images/logo.svg";
-import loginUser from '../../api/Login';
+import { ReactComponent as LogoSVG } from "../../../images/logo.svg";
+import loginUser from '../../../api/Login';
 import { useNavigate } from 'react-router-dom';
 
 const Authentication = () => {
@@ -24,6 +24,10 @@ const Authentication = () => {
       setError(true); 
     }
   };
+
+  const signupRoute = () => {
+    navigate('/signup')
+  }
 
   return (
     <div className="h-screen bg-gray-50 flex flex-col justify-center items-center">
@@ -68,9 +72,12 @@ const Authentication = () => {
                     </div>
                     <div className="bg-white border border-gray-300 text-center w-80 py-4">
                         <span className="text-sm">Don't have an account?</span>
-                        <a className="text-blue-500 text-sm font-semibold ml-1 cursor-pointer">
+                        <button 
+                            className="text-blue-500 text-sm font-semibold ml-1 cursor-pointer"
+                            onClick={signupRoute}
+                        >
                             Sign up
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

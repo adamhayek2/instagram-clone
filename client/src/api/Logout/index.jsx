@@ -6,13 +6,12 @@ const logoutUser = async (token) => {
   try {
     const response = await axios.post(apiUrl, {}, {
       headers: {
-        Authorization: `Bearer ${token}` // Include the token in the Authorization header
+        Authorization: `Bearer ${token}`
       }
     });
-    
-    // Check if the response indicates a successful logout
+
     if (response.status === 200) {
-      localStorage.removeItem("token"); // Remove the token only if logout was successful
+      localStorage.removeItem("token"); 
       return response;
     } else {
       throw new Error('Logout failed');
